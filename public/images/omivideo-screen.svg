@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <defs>
+    <linearGradient id="app" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c1926"/>
+      <stop offset="100%" stop-color="#100f16"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#app)"/>
+  <rect x="0" y="0" width="1200" height="64" fill="#15131e"/>
+  <circle cx="32" cy="32" r="8" fill="#8B7BFF"/>
+  <rect x="60" y="24" width="120" height="16" rx="4" fill="#2a2736"/>
+  <rect x="900" y="20" width="90" height="24" rx="12" fill="#6C4EF5"/>
+  <rect x="1010" y="20" width="90" height="24" rx="12" fill="#2a2736"/>
+  <rect x="40" y="100" width="820" height="440" rx="12" fill="#0c0b10"/>
+  <rect x="70" y="130" width="760" height="380" rx="8" fill="#26222f"/>
+  <polygon points="410,270 410,370 480,320" fill="#8B7BFF"/>
+  <rect x="40" y="560" width="820" height="140" rx="10" fill="#1c1926"/>
+  <rect x="60" y="580" width="780" height="10" rx="5" fill="#3a3548"/>
+  <rect x="60" y="600" width="180" height="60" rx="6" fill="#6C4EF5"/>
+  <rect x="250" y="600" width="180" height="60" rx="6" fill="#2a2736"/>
+  <rect x="440" y="600" width="180" height="60" rx="6" fill="#2a2736"/>
+  <rect x="890" y="100" width="270" height="600" rx="12" fill="#15131e"/>
+  <rect x="915" y="130" width="220" height="14" rx="4" fill="#3a3548"/>
+  <rect x="915" y="160" width="220" height="80" rx="8" fill="#26222f"/>
+  <rect x="915" y="255" width="220" height="80" rx="8" fill="#26222f"/>
+  <rect x="915" y="350" width="220" height="80" rx="8" fill="#26222f"/>
+</svg>
