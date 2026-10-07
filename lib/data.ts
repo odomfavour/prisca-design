@@ -5,7 +5,7 @@ export type CaseStudySection = {
   label: string;
   heading: string;
   paragraphs: string[];
-  image?: string;
+  image?: string | boolean;
 };
 
 export type Project = {
