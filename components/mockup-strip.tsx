@@ -1,3 +1,4 @@
+import { Reveal } from "./reveal";
 import Image from "next/image";
 
 export function MockupStrip() {
@@ -5,8 +6,9 @@ export function MockupStrip() {
     <section className="border-b border-border bg-background px-6 py-10 lg:px-10">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-5 sm:grid-cols-3">
         {[1, 2, 3].map((n) => (
-          <div
+          <Reveal
             key={n}
+            delay={(n - 1) * 100}
             className="overflow-hidden rounded-2xl border border-border"
           >
             <Image
@@ -16,7 +18,7 @@ export function MockupStrip() {
               height={300}
               className="h-full w-full object-cover"
             />
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>

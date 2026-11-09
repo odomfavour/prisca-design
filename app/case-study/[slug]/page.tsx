@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
@@ -9,7 +10,8 @@ import { SidebarToc } from "@/components/case-study/sidebar-toc";
 import { projects } from "@/lib/data";
 
 export function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.slug }));
+  return projects.filter((project) => project.category === "Case Studies")
+    .map((project) => ({ slug: project.slug }));
 }
 
 export async function generateMetadata({
@@ -36,7 +38,7 @@ export default async function CaseStudyPage({
 
   const project = projects.find((p) => p.slug === slug);
 
-  if (!project) notFound();
+  if (!project || project.category !== "Case Studies") notFound();
 
   const sections = project.caseStudy ?? [];
 
@@ -54,7 +56,20 @@ export default async function CaseStudyPage({
           <div className="min-w-0 flex-1">
             <MobileToc sections={sections} />
 
-            <div className="checkerboard aspect-[16/9] w-full overflow-hidden rounded-2xl border border-border" />
+            <div className="overflow-hidden rounded-2xl border border-border">
+              <Image
+                src={project.cover}
+                alt={project.title}
+                width={1200}
+                height={750}
+                className="h-auto w-full"
+                priority
+              />
+            </div>
+
+            <h1 className="mt-8 font-display text-3xl font-bold sm:text-4xl">
+              {project.title}
+            </h1>
 
             <div className="mt-16">
               <CaseStudyContent

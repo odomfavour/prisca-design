@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatedText, Reveal } from "./reveal";
 import {
   CheckCircle2,
   File as FileIcon,
@@ -94,12 +95,14 @@ export function Contact() {
             Contact Me
           </span>
           <h2 className="mt-4 font-display text-3xl font-bold dark:font-sans dark:font-semibold dark:tracking-tight dark:text-white sm:text-4xl">
-            Let&apos;s Work Together
-          </h2>
+          <AnimatedText split="letters">Let&apos;s Work Together</AnimatedText>
+        </h2>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-muted dark:text-white/90 sm:text-base">
-            Have a project in mind, a role to fill, or a conversation to start?
-            I&apos;m always open to meaningful collaborations.
-          </p>
+          <AnimatedText>
+            Have a project in mind, a role to fill, or a conversation to start? I&apos;m
+            always open to meaningful collaborations.
+          </AnimatedText>
+        </p>
 
           <div className="mt-6 flex items-center gap-3">
             {socials.map(({ icon: Icon, href, label, darkColor }) => (
@@ -135,7 +138,7 @@ export function Contact() {
           </div>
         </div>
 
-        <div className="rounded-3xl border border-border bg-surface p-6 dark:rounded-xl dark:border-transparent dark:bg-[#f0eeff] sm:p-8">
+        <Reveal delay={150} className="rounded-3xl border border-border bg-surface p-6 dark:rounded-xl dark:border-transparent dark:bg-[#f0eeff] sm:p-8">
           <h3 className="font-display text-lg font-bold dark:font-sans dark:font-semibold dark:text-neutral-900">
             Get in touch
           </h3>
@@ -245,7 +248,7 @@ export function Contact() {
               </button>
             </form>
           )}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

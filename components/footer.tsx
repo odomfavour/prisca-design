@@ -1,3 +1,4 @@
+import { Reveal } from "./reveal";
 import {
   BehanceIcon,
   DribbbleIcon,
@@ -23,7 +24,7 @@ const socials = [
 export function Footer() {
   return (
     <footer className="bg-accent px-6 pb-6 pt-12 text-white lg:px-10">
-      <div className="mx-auto flex max-w-7xl flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
+      <Reveal className="mx-auto flex max-w-7xl flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
         <Logo dark />
 
         <nav className="flex flex-wrap items-center gap-6 text-sm font-medium text-white/85">
@@ -52,7 +53,7 @@ export function Footer() {
             </a>
           ))}
         </div>
-      </div>
+      </Reveal>
 
       <div className="mx-auto mt-8 max-w-7xl border-t border-white/20 pt-6 text-center text-xs text-white/70">
         ©{new Date().getFullYear()} PriscaDesign. All Rights Reserved.

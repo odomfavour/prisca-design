@@ -1,3 +1,4 @@
+import { AnimatedText, Reveal } from "./reveal";
 import { File as FileIcon, Mail } from "lucide-react";
 import Image from "next/image";
 import {
@@ -47,16 +48,20 @@ export function About() {
           </span>
 
           <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-tight dark:text-white sm:text-4xl">
+          <AnimatedText scale={1.2}>
             I design with intention, empathy, and a strong focus on outcomes.
-          </h2>
+          </AnimatedText>
+        </h2>
 
           <p className="mt-5 text-sm leading-6 text-muted dark:text-white/90 sm:text-base">
-            Over the years, I&apos;ve led end-to-end design processes—from
-            research and strategy to high-fidelity design, prototyping, and
-            handoff. I value clarity, simplicity, and intentional
-            decision-making, and I&apos;m especially drawn to solving complex
-            problems through structured thinking and strong design systems.
-          </p>
+          <AnimatedText>
+            Over the years, I&apos;ve led end-to-end design processes—from research and
+            strategy to high-fidelity design, prototyping, and handoff. I value clarity,
+            simplicity, and intentional decision-making, and I&apos;m especially drawn
+            to solving complex problems through structured thinking and strong design
+            systems.
+          </AnimatedText>
+        </p>
 
           <div className="mt-6 flex items-center gap-3">
             {socials.map(({ icon: Icon, href, label, color }) => (
@@ -90,7 +95,7 @@ export function About() {
           </div>
         </div>
 
-        <div className="aspect-[15/14] overflow-hidden rounded-xl">
+        <Reveal delay={150} className="aspect-[15/14] overflow-hidden rounded-xl">
           <Image
             src="/images/nneoma.png"
             alt="Portrait of Prisca"
@@ -98,7 +103,7 @@ export function About() {
             height={600}
             className="h-full w-full object-cover"
           />
-        </div>
+        </Reveal>
       </div>
     </section>
   );

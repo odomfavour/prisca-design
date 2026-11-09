@@ -1,3 +1,4 @@
+import { AnimatedText, Reveal } from "./reveal";
 import { File as FileIcon, Mail } from "lucide-react";
 import Image from "next/image";
 import {
@@ -12,7 +13,7 @@ const tile =
 
 export function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-background">
+    <section id="home" className="relative isolate overflow-hidden bg-background">
       {/* Wave background: subtle in light mode, inverted + dimmer in dark mode */}
       <div
         aria-hidden
@@ -21,51 +22,61 @@ export function Hero() {
 
       <div className="relative mx-auto flex max-w-6xl flex-col items-center px-6 pb-24 pt-12 text-center sm:pt-14">
         {/* Floating tiles — positioned against the wide container, desktop only */}
-        <span
+        <Reveal direction="left" delay={150}
           className={`${tile} left-12 top-44 -rotate-12  dark:border-white dark:bg-white dark:text-accent dark:hover:bg-neutral-200`}
         >
           <FigmaIcon className="h-12 w-12" />
-        </span>
-        <span
+        </Reveal>
+        <Reveal direction="right" delay={150}
           className={`${tile} right-12 top-44 rotate-12  dark:border-white dark:bg-white dark:text-accent dark:hover:bg-neutral-200`}
         >
           <DribbbleIcon className="h-12 w-12 text-[#ea4c89]" />
-        </span>
-        <span
+        </Reveal>
+        <Reveal direction="left" delay={300}
           className={`${tile} bottom-16 left-12 rotate-12  dark:border-white dark:bg-white`}
         >
           <MediumIcon className="h-12 w-12 text-black " />
-        </span>
-        <span
+        </Reveal>
+        <Reveal direction="right" delay={300}
           className={`${tile} bottom-16 right-12 -rotate-12  dark:border-white dark:bg-white dark:text-accent dark:hover:bg-neutral-200`}
         >
           <BehanceIcon className="h-12 w-12 text-[#1769ff]" />
-        </span>
+        </Reveal>
 
-        <Image
-          src="/images/avatar.png"
-          alt="Portrait of Prisca"
-          width={140}
-          height={140}
-          className="h-[140px] w-[140px] rounded-full object-cover ring-4 ring-background"
-          priority
-        />
+        <Reveal>
+          <Image
+            src="/images/avatar.png"
+            alt="Portrait of Prisca"
+            width={140}
+            height={140}
+            className="h-[140px] w-[140px] rounded-full object-cover ring-4 ring-background"
+            priority
+          />
+        </Reveal>
 
-        <p className="mt-8 text-xl text-foreground">Hi, I&apos;m Prisca 👋</p>
+        <p className="mt-8 text-xl text-foreground">
+          <AnimatedText>Hi, I&apos;m Prisca 👋</AnimatedText>
+        </p>
 
         <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-          I craft digital experiences that
-          <br className="hidden sm:block" /> deliver impact.
+          <AnimatedText split="text" scale={1.2} delay={150}>
+            I craft digital experiences that
+          </AnimatedText>
+          <br className="hidden sm:block" />{" "}
+          <AnimatedText split="text" scale={1.2} delay={190}>
+            deliver impact.
+          </AnimatedText>
         </h1>
 
         <p className="mt-6 max-w-5xl text-base leading-relaxed text-muted sm:text-lg">
-          A Product &amp; UI/UX Designer with extensive experience crafting
-          user-centered, scalable products across AI, fintech, healthcare,
-          e-commerce, and enterprise platforms. I blend UX principles, research,
-          and modern design systems to deliver measurable results.
+          <AnimatedText>
+            A Product &amp; UI/UX Designer with extensive experience crafting user-centered, scalable products across AI, fintech, healthcare, e-commerce, and
+            enterprise platforms. I blend UX principles, research, and modern design
+            systems to deliver measurable results.
+          </AnimatedText>
         </p>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <Reveal delay={350} className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <a
             href="/resume.pdf"
             download
@@ -79,7 +90,7 @@ export function Hero() {
           >
             <Mail className="h-4 w-4" /> Contact Me
           </a>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatedText, Reveal } from "./reveal";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { useEffect, useState } from "react";
 import { testimonials } from "@/lib/data";
@@ -67,77 +68,81 @@ export function Testimonials() {
           <span className="h-1.5 w-1.5 rounded-full bg-accent" /> Testimonials
         </span>
         <h2 className="mx-auto mt-4 max-w-2xl font-display text-3xl font-bold sm:text-4xl">
-          What clients, collaborators, and teams say about working with me.
+          <AnimatedText scale={1.2}>
+            What clients, collaborators, and teams say about working with me.
+          </AnimatedText>
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-sm text-muted sm:text-base">
           Reflections on how my work has helped teams build better, more
           effective products.
         </p>
 
-        <div
-          onPointerEnter={mousePause(true)}
-          onPointerLeave={mousePause(false)}
-          onFocus={() => setPaused(true)}
-          onBlur={() => setPaused(false)}
-        >
+        <Reveal delay={150}>
           <div
-            role="region"
-            aria-roledescription="carousel"
-            aria-label="Testimonials"
-            className="-my-6 mt-4 overflow-hidden py-6"
+            onPointerEnter={mousePause(true)}
+            onPointerLeave={mousePause(false)}
+            onFocus={() => setPaused(true)}
+            onBlur={() => setPaused(false)}
           >
-            {/* One grid cell; every card is stacked in it and slid with translateX */}
-            <div className="grid grid-cols-1 md:grid-cols-[calc((100%_-_2.5rem)_/_3)]">
-              {/* Invisible sizer: keeps the row as tall as the tallest testimonial */}
-              {testimonials.map((t, i) => (
-                <div
-                  key={`size-${i}`}
-                  aria-hidden
-                  className="invisible col-start-1 row-start-1"
-                >
-                  <Card t={t} />
-                </div>
-              ))}
+            <div
+              role="region"
+              aria-roledescription="carousel"
+              aria-label="Testimonials"
+              className="-my-6 mt-4 overflow-hidden py-6"
+            >
+              {/* One grid cell; every card is stacked in it and slid with translateX */}
+              <div className="grid grid-cols-1 md:grid-cols-[calc((100%_-_2.5rem)_/_3)]">
+                {/* Invisible sizer: keeps the row as tall as the tallest testimonial */}
+                {testimonials.map((t, i) => (
+                  <div
+                    key={`size-${i}`}
+                    aria-hidden
+                    className="invisible col-start-1 row-start-1"
+                  >
+                    <Card t={t} />
+                  </div>
+                ))}
 
-              {slides.map(({ abs, offset, t }) => (
-                <div
-                  key={abs}
-                  aria-hidden={offset < 0 || offset > 2}
-                  className="col-start-1 row-start-1 transition-transform duration-500 ease-in-out will-change-transform"
-                  style={{
-                    transform: `translateX(calc(${offset} * (100% + ${GAP})))`,
-                  }}
-                >
-                  <Card
-                    t={t}
-                    className={
-                      offset === 1
-                        ? "md:scale-105 md:shadow-lg"
-                        : "md:opacity-80 dark:md:opacity-90"
-                    }
-                  />
-                </div>
-              ))}
+                {slides.map(({ abs, offset, t }) => (
+                  <div
+                    key={abs}
+                    aria-hidden={offset < 0 || offset > 2}
+                    className="col-start-1 row-start-1 transition-transform duration-500 ease-in-out will-change-transform"
+                    style={{
+                      transform: `translateX(calc(${offset} * (100% + ${GAP})))`,
+                    }}
+                  >
+                    <Card
+                      t={t}
+                      className={
+                        offset === 1
+                          ? "md:scale-105 md:shadow-lg"
+                          : "md:opacity-80 dark:md:opacity-90"
+                      }
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-8 flex items-center justify-center gap-3">
+              <button
+                aria-label="Previous testimonial"
+                onClick={prev}
+                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-border bg-surface transition-colors hover:bg-surface-2 dark:border-white dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <button
+                aria-label="Next testimonial"
+                onClick={next}
+                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-border bg-surface transition-colors hover:bg-surface-2 dark:border-white dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
             </div>
           </div>
-
-          <div className="mt-8 flex items-center justify-center gap-3">
-            <button
-              aria-label="Previous testimonial"
-              onClick={prev}
-              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-border bg-surface transition-colors hover:bg-surface-2 dark:border-white dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <button
-              aria-label="Next testimonial"
-              onClick={next}
-              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-border bg-surface transition-colors hover:bg-surface-2 dark:border-white dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

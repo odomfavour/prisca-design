@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatedText, Reveal } from "./reveal";
 import { useState } from "react";
 import { skillsByTab, type SkillTab } from "@/lib/data";
 
@@ -16,11 +17,13 @@ export function Skills() {
           Tools
         </span>
         <h2 className="mt-4 font-display text-3xl font-bold sm:text-4xl">
-          Skills &amp; Capabilities
+          <AnimatedText split="letters">Skills &amp; Capabilities</AnimatedText>
         </h2>
         <p className="mt-3 max-w-xl text-sm text-muted sm:text-base">
-          A snapshot of the skills and tools I use to design, build, and deliver
-          effective digital products.
+          <AnimatedText>
+            A snapshot of the skills and tools I use to design, build, and deliver
+            effective digital products.
+          </AnimatedText>
         </p>
 
         <div
@@ -46,13 +49,14 @@ export function Skills() {
         </div>
 
         <div className="mt-6 flex flex-wrap gap-3">
-          {skillsByTab[active].map((item) => (
-            <span
-              key={item}
-              className="rounded-full border border-border bg-surface px-4 py-2 text-sm font-medium text-foreground dark:border-white dark:bg-white dark:text-neutral-900"
-            >
-              {item}
-            </span>
+          {skillsByTab[active].map((item, index) => (
+            <Reveal key={`${active}-${item}`} delay={index * 35}>
+              <span
+                className="inline-block rounded-full border border-border bg-surface px-4 py-2 text-sm font-medium text-foreground dark:border-white dark:bg-white dark:text-neutral-900"
+              >
+                {item}
+              </span>
+            </Reveal>
           ))}
         </div>
       </div>

@@ -1,17 +1,18 @@
 "use client";
 
+import { AnimatedText, Reveal } from "./reveal";
 import { useState } from "react";
 import { projects, type ProjectCategory } from "@/lib/data";
 import { ProjectCard } from "./project-card";
 
 const tabs: ProjectCategory[] = [
-  "Case Studies",
   "Live Projects",
-  "Design Shots",
+  "Case Studies",
+  "Creative Shots",
 ];
 
 export function SelectedProjects() {
-  const [active, setActive] = useState<ProjectCategory>("Case Studies");
+  const [active, setActive] = useState<ProjectCategory>("Live Projects");
   const filtered = projects.filter((p) => p.category === active);
 
   return (
@@ -23,12 +24,14 @@ export function SelectedProjects() {
               <span className="h-1.5 w-1.5 rounded-full bg-accent" /> Projects
             </span>
             <h2 className="mt-4 font-display text-3xl font-bold sm:text-4xl">
-              Selected Projects
+              <AnimatedText split="letters">Selected Projects</AnimatedText>
             </h2>
           </div>
           <p className="max-w-xs text-sm text-muted">
-            A selection of real-world projects and design explorations focused
-            on solving problems and delivering impact.
+            <AnimatedText>
+              A selection of real-world projects and design explorations focused on
+              solving problems and delivering impact.
+            </AnimatedText>
           </p>
         </div>
 
@@ -56,8 +59,10 @@ export function SelectedProjects() {
 
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.length ? (
-            filtered.map((project) => (
-              <ProjectCard key={project.slug} project={project} />
+            filtered.map((project, index) => (
+              <Reveal key={project.slug} delay={index * 80} className="h-full [&>article]:h-full">
+                <ProjectCard project={project} />
+              </Reveal>
             ))
           ) : (
             <p className="col-span-full py-10 text-center text-sm text-muted">
